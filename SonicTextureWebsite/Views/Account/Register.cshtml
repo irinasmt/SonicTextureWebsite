@@ -1,0 +1,59 @@
+﻿@model WebApplication2.Models.RegisterViewModel
+@{
+    ViewBag.Title = "Register";
+}
+@{
+    Layout = "~/Views/shared/_Layout.cshtml";
+}
+
+
+<section class="g-bg-gray-light-v5">
+    <div class="container g-py-100">
+        <div class="row justify-content-center">
+            <div class="col-sm-8 col-lg-5">
+                <div class="u-shadow-v21 g-bg-white rounded g-py-40 g-px-30">
+                    <header class="text-center mb-4">
+                        <h2 class="h2 g-color-black g-font-weight-600">@ViewBag.Title</h2>
+                    </header>
+
+                    @using (Html.BeginForm("Register", "Account", FormMethod.Post, new { @class = "form-horizontal", role = "form" }))
+                    {
+                        @Html.AntiForgeryToken()                       
+                        @Html.ValidationSummary("", new { @class = "text-danger" })
+                        <div class="form-group">
+                            @Html.LabelFor(m => m.Email, new { @class = "col-md-2 control-label" })
+                            <div class=" ">
+                                @Html.TextBoxFor(m => m.Email, new { @class = "form-control g-color-black g-bg-white g-bg-white--focus g-brd-gray-light-v4 g-brd-primary--hover rounded g-py-15 g-px-15"  })
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            @Html.LabelFor(m => m.Password, new { @class = "col-md-2 control-label" })
+                            <div class=" ">
+                                @Html.PasswordFor(m => m.Password, new { @class = "form-control g-color-black g-bg-white g-bg-white--focus g-brd-gray-light-v4 g-brd-primary--hover rounded g-py-15 g-px-15" })
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            @Html.LabelFor(m => m.ConfirmPassword, new { @class = "col-md-2 control-label" })
+                            <div class=" ">
+                                @Html.PasswordFor(m => m.ConfirmPassword, new { @class = "form-control g-color-black g-bg-white g-bg-white--focus g-brd-gray-light-v4 g-brd-primary--hover rounded g-py-15 g-px-15" })
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <div class="col-md-offset-2  ">
+                                <button class="btn btn-md btn-block u-btn-primary rounded g-py-13" type="submit">Register</button>
+                            </div>
+                        </div>
+                    } <footer class="text-center">
+                        <p class="g-color-gray-dark-v5 g-font-size-13 mb-0">
+                            Already have an account?@Html.ActionLink(" log in", "Login",null, new { @class = "g-font-weight-600" })
+                        </p>
+                    </footer>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}

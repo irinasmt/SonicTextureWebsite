@@ -1,0 +1,18 @@
+﻿@{
+    ViewBag.Title = "Confirm Email";
+}
+@{
+    Layout = "~/Views/shared/_Layout.cshtml";
+}
+
+<section class="g-py-40">
+    <div class="container">
+        
+        <div>
+            <h3>
+                Thank you for confirming your email. Please @Html.ActionLink("Click here to Log in", "Login", "Account", routeValues: null, htmlAttributes: new { id = "loginLink" })
+            </h3>
+        </div>
+
+    </div>
+</section>
